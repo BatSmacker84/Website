@@ -5,20 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- required to handle IE -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- required to handle mobiles -->
     <title>Home</title>
+    <link rel="shortcut icon" type="image/png" href="/baitman.png">
     <link rel="stylesheet" href="main.css">
 </head>
 <body class="dark-theme">
-    <h1>Home</h1>
-    <h2>To Do:</h2>
-<div class="to-do">
-    <ul>
-        <li>visual styles</li>
-        <li>create light and dark themes</li>
-        <li>Enable switching theme</li>
-    </ul>
+<div id="header">
+    <div id="header-items">
+        <a href="/" class="header-item"><img src="/baitman.png" alt="logo" id="logo"></a>
+        <button class="header-item" id="theme-toggle">Light</button>
+    </div>
+    <div id="header-bg-img"></div>
 </div>
-<div>
-        <button class="theme-switch">Light</button>
+<div id="menu">
+    <div id="menu-items">
+        <a data-value="HOME" href="/" class="menu-item">HOME</a>
+        <a data-value="ABOUT" href="/" class="menu-item">ABOUT</a>
+        <a data-value="CONTACT" href="/" class="menu-item">CONTACT</a>
+    </div>
+    <div id="menu-bg-img"></div>
 </div>
     <script src="app.js"></script>
     <noscript>JavaScript is disabled in your browser. Please enable it to view the content.</noscript>
