@@ -18,14 +18,6 @@ switcher.addEventListener('click', function() {
 const menu = document.getElementById('menu');
 const menuItems = document.getElementsByClassName('menu-item');
 
-Array.from(menuItems)
-    .forEach((item, index) => {
-        item.onmouseover = () => {
-            menu.dataset.activeIndex = index;
-        }
-    }
-);
-
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // Create event listener for onmouseover for menu-item class

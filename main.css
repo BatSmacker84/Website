@@ -24,55 +24,18 @@ body {
     --text: var(--light);
 }
 
-#header {
-    width: 100vw;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-}
-
-#header-items {
-    width: 100%;
-    height: 100%;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-item {
-    display: inline-block;
-    height: 100%;
-    color: var(--text);
-    font-weight: 700;
-    text-decoration: none;
-}
-
-#logo {
-    display: flex;
-    align-items: center;
-}
-
 #theme-toggle {
-    width: 64px;
+    width: 64;
+    height: 64;
     font-size: 16px;
 
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+
+    color: var(--text);
     border: none;
     background: none;
-}
-
-#header-bg-img {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: -1;
-
-    background-color: var(--head);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #313131;
 }
 
 #menu {
@@ -108,41 +71,4 @@ body {
     -moz-transition: opacity 0.3s ease;
     -ms-transition: opacity 0.3s ease;
     -o-transition: opacity 0.3s ease;
-}
-
-#menu-bg-img {
-    height: 100vh;
-    width: 100vw;
-    background-image: radial-gradient(var(--text) 13%, transparent 13%);
-    opacity: 0.2;
-    background-position: 0% 0%;
-    background-size: 12vmin 12vmin;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -2;
-    transition: transform 0.5s ease, opacity 0.5s ease, background-position 1s ease;
-    -moz-transition: transform 0.5s ease, opacity 0.5s ease, background-position 1s ease;
-    -ms-transition: transform 0.5s ease, opacity 0.5s ease, background-position 1s ease;
-    -o-transition: transform 0.5s ease, opacity 0.5s ease, background-position 1s ease;
-    -webkit-transition: transform 0.5s ease, opacity 0.5s ease, background-position 1s ease;
-}
-
-#menu-items:hover ~ #menu-bg-img {
-    transform: scale(0.95);
-    opacity: 0.1;
-    -webkit-transform: scale(0.95);
-    -moz-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    -o-transform: scale(0.95);
-}
-
-#menu[data-active-index="0"] > #menu-bg-img {
-    background-position: 0 0;
-}
-#menu[data-active-index="1"] > #menu-bg-img {
-    background-position: 0 -15vmax;
-}
-#menu[data-active-index="2"] > #menu-bg-img {
-    background-position: 0 -30vmax;
 }
