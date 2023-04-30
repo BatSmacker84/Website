@@ -9,14 +9,19 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body class="dark-theme">
-<div>
-    <button id="theme-toggle">Light</button>
+<div id="helloworld">
+    <div id="helloworld-image">
+        <img src="baitman.png" alt="baitman">
+    </div>
+    <div id="helloworld-text">
+        <span class="helloworld-title" data-period="3000" data-rotate='[ "test1", "test2", "test3 "]'></span>
+    </div>
 </div>
 <div id="menu">
     <div id="menu-items">
-        <a data-value="HOME" href="/" class="menu-item">HOME</a>
-        <a data-value="ABOUT" href="/" class="menu-item">ABOUT</a>
-        <a data-value="CONTACT" href="/" class="menu-item">CONTACT</a>
+        <a id="about" class="menu-item" href="/"></a>
+        <a id="projects" class="menu-item" href="/"></a>
+        <a id="contacts" class="menu-item" href="/"></a>
     </div>
 </div>
     <script src="app.js"></script>

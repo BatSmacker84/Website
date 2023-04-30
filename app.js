@@ -1,41 +1,59 @@
 'use strict';
 
-const switcher = document.getElementById('theme-toggle');
+let TxtRotate = function(el, toRotate, period) {
+    this.toRotate = toRotate;
+    this.el = el;
+    this.loopNum = 0;
+    this.period = parseInt(period, 10) || 2000;
+    this.txt = '';
+    this.tick();
+    this.isDeleting = false;
+};
 
-switcher.addEventListener('click', function() {
-    document.body.classList.toggle('dark-theme')
-    document.body.classList.toggle('light-theme')
+TxtRotate.prototype.tick = function() {
+        let i = this.loopNum % this.toRotate.length;
+        let fullTxt = this.toRotate[i];
 
-    const className = document.body.className;
-    if (className == "light-theme") {
-        this.textContent = "Dark";
+    if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
     }
     else {
-        this.textContent = "Light";
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
-});
 
-const menu = document.getElementById('menu');
-const menuItems = document.getElementsByClassName('menu-item');
+    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let that = this;
+    let delta = 200 - Math.random() * 100;
 
-// Create event listener for onmouseover for menu-item class
-// When onmouseover, set all the text of the menu-item to random letters
-Array.from(menuItems).forEach((item) => {
-    item.addEventListener('mouseover', () => {
-        let iterations = 0;
-        const interval = setInterval(() => {
-            item.textContent = item.textContent.split('')
-            .map((letter, index) => {
-                if (index < iterations) {
-                    return item.dataset.value[index];
-                }
-                return letters[Math.floor(Math.random() * 26)]
-            })
-            .join('');
-            if (iterations >= item.dataset.value.length) clearInterval(interval);
-            iterations += 1 / 3;
-        }, 30);
-    });
-});
+    if (this.isDeleting) { delta /= 2; }
+
+    if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+    }
+    else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+    }
+
+    setTimeout(function() {
+        that.tick();
+    }, delta);
+};
+
+window.onload = function() {
+    let elements = document.getElementsByClassName('helloworld-title');
+    for (const element of elements) {
+        let toRotate = element.getAttribute('data-rotate');
+        let period = element.getAttribute('data-period');
+        if (toRotate) {
+            new TxtRotate(element, JSON.parse(toRotate), period);
+        }
+    }
+    // INJECT CSS
+    let css = document.createElement("style");
+    css.innerHTML = "#helloworld-title > .wrap { border-right: 0.08em solid #666 }";
+    document.body.appendChild(css);
+};
